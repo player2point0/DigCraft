@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="library">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/peasycam_302/peasycam/library" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/peasycam_302/peasycam/library" recursive="false" />
+  </library>
+</component>
