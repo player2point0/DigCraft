@@ -1,10 +1,8 @@
-import peasy.*;
 
 import processing.core.PApplet;
 
 public class test extends PApplet
 {
-    PeasyCam cam;
 
     public void settings()
     {
@@ -13,11 +11,6 @@ public class test extends PApplet
 
     public void setup()
     {
-        cam = new PeasyCam(this, 100);
-        cam.setMinimumDistance(50);
-        cam.setMaximumDistance(500);
-
-
         rotateX(-.5f);
         rotateY(-.5f);
         fill(255,0,0);

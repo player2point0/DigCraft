@@ -14,13 +14,13 @@ public class MainGame extends PApplet
     {
         translate(width/2, height/2, 0);   //recenter
 
-        //player = new Player(0,-50,0,100,100,100, this);
+        player = new Player(10,-10,10,20,-10,20, this);
         terrain = new Terrain(20, 20);
     }
 
     public void keyPressed()
     {
-        //player.MovePlayer(this);
+        player.MovePlayer();
     }
 
     public void draw()
@@ -28,12 +28,10 @@ public class MainGame extends PApplet
         //clear current frame
         background(255);
 
-        camera(50, -50, 50, 0, 0, 0, 0.0f, 1.0f, 0.0f);
-
-        //player.RotateCamera(this);
+        player.RotateCamera();
         terrain.RenderBlocks(this);
 
-        println(frameRate);
+        //println("frameRate : "+frameRate);
     }
 
     public static void main(String... args)
