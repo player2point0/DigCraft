@@ -16,6 +16,7 @@ public class Player extends GameObject
         this.window = window;
 
         xRotationAngle = 0;
+        yRotationAngle = 0;
 
         SetCameraRotation();
     }
@@ -38,17 +39,19 @@ public class Player extends GameObject
         if(window.mouseY > window.pmouseY)
         {
             //rotate player up
-            yRotationAngle -= 0.01f * MOVE_SPEED;
+            yRotationAngle -= 0.005f * MOVE_SPEED;
         }
-        else if(window.mouseY < window.mouseY)
+        else if(window.mouseY < window.pmouseY)
         {
             //rotate player down
-            yRotationAngle += 0.01f * MOVE_SPEED;
+            yRotationAngle += 0.005f * MOVE_SPEED;
         }
 
         SetCameraRotation();
 
-        //need way to reset mouse to center
+        //System.out.println(yRotationAngle);
+
+        //new way to reset mouse to center
     }
 
     public void MovePlayer()
@@ -75,7 +78,7 @@ public class Player extends GameObject
 
     private void SetCameraRotation()
     {
-        PVector centerPos = AngleCalcPos(xRotationAngle, 0, 1);
+        PVector centerPos = AngleCalcPos(xRotationAngle, -yRotationAngle, 2);
 
         window.camera(pos.x,pos.y,pos.z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
     }
@@ -88,11 +91,19 @@ public class Player extends GameObject
         window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
     }
 
-    private PVector AngleCalcPos(double xTheta, double yTheta, double radius)
+    private PVector AngleCalcPos(double Theta, double Phi, double radius)
     {
-        float camX = (float) (radius * Math.sin(xTheta));
+        /*
+        float camX = (float) (radius * Math.sin(Theta));
         float camY = 0;
-        float camZ = (float) (radius * Math.cos(xTheta));
+        float camZ = (float) (radius * Math.cos(Theta));
+        */
+
+        float camX = (float) (radius * Math.sin(Theta) * Math.cos(Phi));
+        float camY = (float) (radius * Math.sin(Phi));
+        float camZ = (float) (radius * Math.cos(Theta));
+
+        //System.out.println(camY);
 
         return new PVector(pos.x+camX, pos.y+camY, pos.z+camZ);
     }

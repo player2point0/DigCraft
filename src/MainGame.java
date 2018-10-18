@@ -46,6 +46,10 @@ public class MainGame extends PApplet
 
         if(mouseX == width-1) mouseRobot.mouseMove(1, mouseY); //if mouse touches right set mouse to the left
         if(mouseX == 0) mouseRobot.mouseMove(width-2, mouseY); //if mouse touches left set mouse to the right
+
+
+        if(mouseY == height-1) mouseRobot.mouseMove(mouseX, 1); //if mouse touches top set mouse to the bottom
+        if(mouseY == 0) mouseRobot.mouseMove(mouseX, height); //if mouse touches bottom set mouse to the top
     }
 
     public void draw()
