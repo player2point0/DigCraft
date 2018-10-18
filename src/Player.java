@@ -36,7 +36,7 @@ public class Player extends GameObject
             //rotate player right
             xRotationAngle -= 0.01f * MOVE_SPEED;
         }
-        else if(currentMouseX < previousMouseX)
+        else if(currentMouseX < previousMouseX || (currentMouseX - 10) <= 0)
         {
             //rotate player left
             xRotationAngle += 0.01f * MOVE_SPEED;
