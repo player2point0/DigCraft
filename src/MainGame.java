@@ -38,10 +38,6 @@ public class MainGame extends PApplet
         }
     }
 
-    public void keyPressed()
-    {
-        player.MovePlayer();
-    }
 
     public void resetMouse()
     {
@@ -78,6 +74,7 @@ public class MainGame extends PApplet
         background(255);
 
         player.RotateCamera();
+        player.MovePlayer();
 
         terrain.RenderBlocks(this);
 
