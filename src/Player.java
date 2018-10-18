@@ -40,18 +40,18 @@ public class Player extends GameObject
         {
             //rotate player up
             yRotationAngle -= 0.005f * MOVE_SPEED;
+            if(yRotationAngle < -Math.PI/2) yRotationAngle = -Math.PI/2;
         }
         else if(window.mouseY < window.pmouseY)
         {
             //rotate player down
             yRotationAngle += 0.005f * MOVE_SPEED;
+            if(yRotationAngle > Math.PI/2) yRotationAngle = Math.PI/2;
         }
 
         SetCameraRotation();
 
         //System.out.println(yRotationAngle);
-
-        //new way to reset mouse to center
     }
 
     public void MovePlayer()
@@ -78,7 +78,7 @@ public class Player extends GameObject
 
     private void SetCameraRotation()
     {
-        PVector centerPos = AngleCalcPos(xRotationAngle, -yRotationAngle, 2);
+        PVector centerPos = AngleCalcPos(xRotationAngle, -yRotationAngle, 1);
 
         window.camera(pos.x,pos.y,pos.z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
     }
