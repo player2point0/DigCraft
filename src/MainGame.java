@@ -15,7 +15,7 @@ public class MainGame extends PApplet
         translate(width/2, height/2, 0);   //recenter
 
         player = new Player(10,-10,10,20,-10,20, this);
-        terrain = new Terrain(20, 20);
+        terrain = new Terrain(100, 100);
     }
 
     public void keyPressed()
@@ -31,7 +31,7 @@ public class MainGame extends PApplet
         player.RotateCamera();
         terrain.RenderBlocks(this);
 
-        //println("frameRate : "+frameRate);
+        println("frameRate : "+frameRate);
     }
 
     public static void main(String... args)
