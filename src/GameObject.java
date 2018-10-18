@@ -10,19 +10,12 @@ public class GameObject
     protected int xSize;
     protected int ySize;
     protected int zSize;
-    protected float x;
-    protected float y;
-    protected float z;
     private int fillColor;
     private int strokeColor;
 
     public GameObject(float x, float y, float z, int xSize, int ySize, int zSize)
     {
         this.pos = new PVector(x, y, z);
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
 
         this.xSize = xSize;
         this.ySize = ySize;
@@ -32,10 +25,6 @@ public class GameObject
     public GameObject(float x, float y, float z, int xSize, int ySize, int zSize, int strokeColor, int fillColor)
     {
         this.pos = new PVector(x, y, z);
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
 
         this.xSize = xSize;
         this.ySize = ySize;

@@ -6,8 +6,6 @@ public class Player extends GameObject
     final private float MOVE_SPEED = 2;
     private double xRotationAngle;    //measured from below x axis in radians
     private double yRotationAngle;
-    private double previousMouseX;
-    private double previousMouseY;
     PApplet window;
 
 
@@ -17,9 +15,6 @@ public class Player extends GameObject
 
         this.window = window;
 
-        previousMouseX = window.width / 2.0;
-        previousMouseY = window.height / 2.0;
-
         xRotationAngle = 0;
 
         SetCameraRotation();
@@ -28,26 +23,24 @@ public class Player extends GameObject
     public void RotateCamera()
     {
         //if mouse moved right then move the camera's centre position right
-        double currentMouseX = window.pmouseX;
-        double currentMouseY = window.pmouseY;
 
-        if(currentMouseX > previousMouseX || (currentMouseX + 10) >= window.width)
+        if(window.mouseX > window.pmouseX)
         {
             //rotate player right
             xRotationAngle -= 0.01f * MOVE_SPEED;
         }
-        else if(currentMouseX < previousMouseX)
+        else if(window.mouseX < window.pmouseX)
         {
             //rotate player left
             xRotationAngle += 0.01f * MOVE_SPEED;
         }
 
-        if(currentMouseY > previousMouseY)
+        if(window.mouseY > window.pmouseY)
         {
             //rotate player up
             yRotationAngle -= 0.01f * MOVE_SPEED;
         }
-        else if(currentMouseY < previousMouseY)
+        else if(window.mouseY < window.mouseY)
         {
             //rotate player down
             yRotationAngle += 0.01f * MOVE_SPEED;
@@ -55,10 +48,7 @@ public class Player extends GameObject
 
         SetCameraRotation();
 
-        previousMouseX = currentMouseX;
-        previousMouseY = currentMouseY;
-
-        //new way to reset mouse to center
+        //need way to reset mouse to center
     }
 
     public void MovePlayer()
@@ -81,23 +71,21 @@ public class Player extends GameObject
         //calculate new position using the temp angle and radius
         //move to new position
         //recalculate the camera's new center
-
     }
 
     private void SetCameraRotation()
     {
         PVector centerPos = AngleCalcPos(xRotationAngle, 0, 1);
 
-        window.camera(x,y,z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
+        window.camera(pos.x,pos.y,pos.z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
     }
 
-    private void addPosition(float x, float y, float z)
+    private void addPosition(PVector newPos)
     {
-        x += x;
-        y += y;
-        z += z;
-
-        window.camera(x,y,z,0,0,0,0,1,0);
+        //update the gameobjects position
+        pos.add(newPos);
+        //move the camera to the new position
+        window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
     }
 
     private PVector AngleCalcPos(double xTheta, double yTheta, double radius)
@@ -106,6 +94,6 @@ public class Player extends GameObject
         float camY = 0;
         float camZ = (float) (radius * Math.cos(xTheta));
 
-        return new PVector(x+camX, y+camY, z+camZ);
+        return new PVector(pos.x+camX, pos.y+camY, pos.z+camZ);
     }
 }
