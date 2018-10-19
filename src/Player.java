@@ -62,16 +62,18 @@ public class Player extends GameObject
         if(window.key == 'w')
         {
             newPos = AngleCalcPos(xRotationAngle, 0, MOVE_SPEED);
+            System.out.println(newPos);
+
         }
         else if(window.key == 'a')
         {
             newPos = AngleCalcPos(xRotationAngle + Math.PI / 2, 0, MOVE_SPEED);
         }
-        if(window.key == 's')
+        else if(window.key == 's')
         {
             newPos = AngleCalcPos(xRotationAngle +  Math.PI, 0, MOVE_SPEED);
         }
-        if(window.key == 'd')
+        else if(window.key == 'd')
         {
             newPos = AngleCalcPos(xRotationAngle + 3 * (Math.PI / 2), 0, MOVE_SPEED);
         }
@@ -81,8 +83,6 @@ public class Player extends GameObject
         //calculate new position using the temp angle and radius
         //move to new position
         changePosition(newPos);
-        //recalculate the camera's new center
-        SetCameraRotation();
     }
 
     private void SetCameraRotation()
@@ -94,10 +94,15 @@ public class Player extends GameObject
 
     private void changePosition(PVector newPos)
     {
-        //update the gameobjects position
+        //check if new position will result in a collision
+        //if collision then don't chnage position
+
+        //update the gameObjects position
         pos = newPos;
         //move the camera to the new position
         window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
+        //recalculate the camera's new center
+        SetCameraRotation();
     }
 
     private PVector AngleCalcPos(double Theta, double Phi, double radius)
@@ -112,8 +117,12 @@ public class Player extends GameObject
         float camY = (float) (radius * Math.sin(Phi));
         float camZ = (float) (radius * Math.cos(Theta));
 
-        //System.out.println(camY);
-
         return new PVector(pos.x+camX, pos.y+camY, pos.z+camZ);
+    }
+
+    public void ApplyGravity()
+    {
+        //set position to a position vertically down times gravity constant
+
     }
 }

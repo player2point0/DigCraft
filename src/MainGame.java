@@ -74,7 +74,7 @@ public class MainGame extends PApplet
         background(255);
 
         player.RotateCamera();
-        player.MovePlayer();
+        if(keyPressed) player.MovePlayer();
 
         terrain.RenderBlocks(this);
 

@@ -52,13 +52,16 @@ public class GameObject
         boolean yCollision = false;
         boolean zCollision = false;
 
+        //test if this objects bounds are within the other objects bounds
+
+        xCollision = ((this.pos.x + xSize) >= (other.pos.x - other.xSize)) || ((this.pos.x - xSize) <= (other.pos.x + other.xSize));
+
+        yCollision = ((this.pos.y + ySize) >= (other.pos.y - other.ySize)) || ((this.pos.y - ySize) <= (other.pos.y + other.ySize));
+
+        zCollision = ((this.pos.z + zSize) >= (other.pos.z - other.zSize)) || ((this.pos.z - zSize) <= (other.pos.z + other.zSize));
+
 
         return xCollision || yCollision || zCollision;
-    }
-
-    public void ApplyGravity()
-    {
-
     }
 
 }
