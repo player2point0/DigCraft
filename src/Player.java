@@ -6,24 +6,26 @@ public class Player extends GameObject
     final private float MOVE_SPEED = 2;
     final private float X_ROTATION_SENS = 0.02f;
     final private float Y_ROTATION_SENS = 0.01f;
+    final protected float GRAVITY = 3;
+
     private double xRotationAngle;    //measured from below x axis in radians
     private double yRotationAngle;
-    PApplet window;
+    private Terrain terrain;
 
-    public Player(float x, float y, float z, int xSize, int ySize, int zSize, PApplet window)
+    public Player(float x, float y, float z, int xSize, int ySize, int zSize, int strokeColor, int fillColor, PApplet window, Terrain terrain)
     {
-        super(x, y, z, xSize, ySize, zSize);
+        super(x, y, z, xSize, ySize, zSize, strokeColor, fillColor, window);
 
-        this.window = window;
-
+        this.terrain = terrain;
         xRotationAngle = 0;
         yRotationAngle = 0;
 
-        SetCameraRotation();
+        //SetCameraRotation();
     }
 
     public void RotateCamera()
     {
+        /*
         //if mouse moved right then move the camera's centre position right
 
         if(window.mouseX > window.pmouseX)
@@ -51,6 +53,7 @@ public class Player extends GameObject
         }
 
         SetCameraRotation();
+        */
     }
 
     public void MovePlayer()
@@ -87,20 +90,30 @@ public class Player extends GameObject
 
     private void SetCameraRotation()
     {
+        /*
         PVector centerPos = AngleCalcPos(xRotationAngle, -yRotationAngle, 1);
 
         window.camera(pos.x,pos.y,pos.z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
+        */
     }
 
     private void changePosition(PVector newPos)
     {
+        /*
         //check if new position will result in a collision
-        //if collision then don't chnage position
+        boolean collisionAtNewPos = terrain.CollisionAtNewPos(newPos,this);
+        //if collision then don't change position
+        if(collisionAtNewPos)
+        {
+            System.out.println("collision");
+            return;
+        }
+        */
 
         //update the gameObjects position
         pos = newPos;
         //move the camera to the new position
-        window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
+        //window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
         //recalculate the camera's new center
         SetCameraRotation();
     }
@@ -113,16 +126,17 @@ public class Player extends GameObject
         float camZ = (float) (radius * Math.cos(Theta));
         */
 
-        float camX = (float) (radius * Math.sin(Theta) * Math.cos(Phi));
-        float camY = (float) (radius * Math.sin(Phi));
-        float camZ = (float) (radius * Math.cos(Theta));
+        float posX = (float) (radius * Math.sin(Theta) * Math.cos(Phi));
+        float posY = (float) (radius * Math.sin(Phi));
+        float posZ = (float) (radius * Math.cos(Theta));
 
-        return new PVector(pos.x+camX, pos.y+camY, pos.z+camZ);
+        return new PVector(pos.x+posX, pos.y+posY, pos.z+posZ);
     }
 
     public void ApplyGravity()
     {
         //set position to a position vertically down times gravity constant
-
+        PVector newPos = AngleCalcPos(0, Math.PI/2, GRAVITY);
+        changePosition(newPos);
     }
 }

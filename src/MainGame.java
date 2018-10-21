@@ -4,6 +4,10 @@ import java.awt.*;
 
 public class MainGame extends PApplet
 {
+
+    final private int redColor = -65536;
+    final private int blackColor = -16777216;
+
     Player player;
     Terrain terrain;
     Robot mouseRobot;
@@ -16,13 +20,20 @@ public class MainGame extends PApplet
     public void setup()
     {
         createMouseReseter();
+        noCursor();
 
         translate(width/2, height/2, 0);   //recenter
 
-        player = new Player(10,-10,10,20,-10,20, this);
-        terrain = new Terrain(20, 20);
-
+        terrain = new Terrain(10, 10, this);
+        player = new Player(0,-500,0,100,100,100, redColor, blackColor,this, terrain);
         drawCrosshair();
+
+        //camera(0, 0, 1000, 0, 0, 0, 0, 1, 0); //side view
+        //camera(1, -1000, 1, 0, 0, 0, 0, 1, 0); //top view
+        camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
+
+        drawAxes(10000);
+
     }
 
     public void createMouseReseter()
@@ -37,7 +48,6 @@ public class MainGame extends PApplet
             exit();
         }
     }
-
 
     public void resetMouse()
     {
@@ -65,6 +75,20 @@ public class MainGame extends PApplet
         */
     }
 
+    public void drawAxes(float size)
+    {
+        strokeWeight(10);
+        //X  - red
+        stroke(192,0,0);
+        line(-size,0,0,size,0,0);
+        //Y - green
+        stroke(0,192,0);
+        line(0,-size,0,0,size,0);
+        //Z - blue
+        stroke(0,0,192);
+        line(0,0,-size,0,0,size);
+        strokeWeight(2);
+    }
 
     public void draw()
     {
@@ -73,14 +97,18 @@ public class MainGame extends PApplet
         //clear current frame
         background(255);
 
+        player.ApplyGravity();
         player.RotateCamera();
+        player.Render();
         if(keyPressed) player.MovePlayer();
 
-        terrain.RenderBlocks(this);
+        terrain.RenderBlocks();
 
         drawCrosshair();
 
         //println("frameRate : "+frameRate);
+        drawAxes(10000);
+
     }
 
     public static void main(String... args)

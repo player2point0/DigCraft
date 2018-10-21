@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PVector;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ public class Terrain
     private int redColor = -65536;
     private int blackColor = -16777216;
 
-    public Terrain (int xSize, int zSize)
+    public Terrain (int xSize, int zSize, PApplet window)
     {
         float halfXSize = xSize/2.0f;
         float halfZSize = zSize/2.0f;
@@ -20,7 +21,7 @@ public class Terrain
             for(float z=-halfZSize;z<=halfZSize;z++)
             {
                 //scale block coordinates
-                Block newBlock = new Block((x*100),200,(z*100),100,100,100,blackColor,redColor);
+                Block newBlock = new Block((x*100),200,(z*100),100,100,100, blackColor, redColor, window);
 
                 blocks.add(newBlock);
             }
@@ -28,13 +29,24 @@ public class Terrain
 
     }
 
-    public void RenderBlocks(PApplet window)
+    public void RenderBlocks()
     {
         for(int i=0;i<blocks.size();i++)
         {
-            blocks.get(i).Render(window);
+            blocks.get(i).Render();
         }
     }
 
+    public boolean CollisionAtNewPos(PVector newPos, GameObject obj)
+    {
+        for (int i = 0;i<blocks.size();i++)
+        {
+            if(obj.CollidesWith(blocks.get(i), newPos)) return true;
+        }
+
+        System.out.println("no collision");
+
+        return false;
+    }
 
 }

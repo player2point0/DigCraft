@@ -4,25 +4,15 @@ import processing.core.PVector;
 
 public class GameObject
 {
-    final protected float GRAVITY = 10;
-
     protected PVector pos;
     protected int xSize;
     protected int ySize;
     protected int zSize;
     private int fillColor;
     private int strokeColor;
+    protected PApplet window;
 
-    public GameObject(float x, float y, float z, int xSize, int ySize, int zSize)
-    {
-        this.pos = new PVector(x, y, z);
-
-        this.xSize = xSize;
-        this.ySize = ySize;
-        this.zSize = zSize;
-    }
-
-    public GameObject(float x, float y, float z, int xSize, int ySize, int zSize, int strokeColor, int fillColor)
+    public GameObject(float x, float y, float z, int xSize, int ySize, int zSize, int strokeColor, int fillColor, PApplet window)
     {
         this.pos = new PVector(x, y, z);
 
@@ -32,9 +22,11 @@ public class GameObject
 
         this.strokeColor = strokeColor;
         this.fillColor = fillColor;
+
+        this.window = window;
     }
 
-    public void Render(PApplet window)
+    public void Render()
     {
         window.translate(pos.x, pos.y, pos.z);   //move to coordinates
 
@@ -46,7 +38,7 @@ public class GameObject
         window.translate(-pos.x, -pos.y, -pos.z);   //recenter
     }
 
-    public boolean CollidesWith(GameObject other)
+    public boolean CollidesWith(GameObject other, PVector newPos)
     {
         boolean xCollision = false;
         boolean yCollision = false;
