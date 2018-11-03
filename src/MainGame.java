@@ -30,7 +30,7 @@ public class MainGame extends PApplet
 
         //camera(0, 0, 1000, 0, 0, 0, 0, 1, 0); //side view
         //camera(1, -1000, 1, 0, 0, 0, 0, 1, 0); //top view
-        camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
+        //camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
 
         drawAxes(10000);
 

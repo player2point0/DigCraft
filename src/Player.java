@@ -20,12 +20,11 @@ public class Player extends GameObject
         xRotationAngle = 0;
         yRotationAngle = 0;
 
-        //SetCameraRotation();
+        SetCameraRotation();
     }
 
     public void RotateCamera()
     {
-        /*
         //if mouse moved right then move the camera's centre position right
 
         if(window.mouseX > window.pmouseX)
@@ -53,7 +52,7 @@ public class Player extends GameObject
         }
 
         SetCameraRotation();
-        */
+
     }
 
     public void MovePlayer()
@@ -90,11 +89,9 @@ public class Player extends GameObject
 
     private void SetCameraRotation()
     {
-        /*
         PVector centerPos = AngleCalcPos(xRotationAngle, -yRotationAngle, 1);
 
         window.camera(pos.x,pos.y,pos.z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
-        */
     }
 
     private void changePosition(PVector newPos)
@@ -120,27 +117,9 @@ public class Player extends GameObject
 
     private PVector AngleCalcPos(double Theta, double Phi, double radius)
     {
-        //needs tweaking
-
-
-
-        float posX = (float) (radius * Math.sin(Phi) * Math.cos(Theta));
-        float posY = (float) (radius * Math.sin(Phi) * Math.sin(Theta));
-        float posZ = (float) (radius * Math.cos(Phi));
-
-
-
-        /*
-        float posX = (float) (radius * Math.sin(Theta));
-        float posY = 0;
-        float posZ = (float) (radius * Math.cos(Theta));
-        */
-
-        /*
         float posX = (float) (radius * Math.sin(Theta) * Math.cos(Phi));
         float posY = (float) (radius * Math.sin(Phi));
         float posZ = (float) (radius * Math.cos(Theta));
-        */
 
         return new PVector(pos.x+posX, pos.y+posY, pos.z+posZ);
     }
@@ -148,7 +127,7 @@ public class Player extends GameObject
     public void ApplyGravity()
     {
         //set position to a position vertically down times gravity constant
-        PVector newPos = AngleCalcPos(-Math.PI/2, -Math.PI/2, GRAVITY);
+        PVector newPos = AngleCalcPos(-Math.PI/2, Math.PI/2, GRAVITY);
         changePosition(newPos);
     }
 }
