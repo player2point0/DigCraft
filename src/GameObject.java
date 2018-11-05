@@ -40,20 +40,21 @@ public class GameObject
 
     public boolean CollidesWith(GameObject other, PVector newPos)
     {
-        boolean xCollision = false;
-        boolean yCollision = false;
-        boolean zCollision = false;
+        //refactor
 
         //test if this objects bounds are within the other objects bounds
 
-        xCollision = ((this.pos.x + xSize) >= (other.pos.x - other.xSize)) || ((this.pos.x - xSize) <= (other.pos.x + other.xSize));
 
-        yCollision = ((this.pos.y + ySize) >= (other.pos.y - other.ySize)) || ((this.pos.y - ySize) <= (other.pos.y + other.ySize));
+        boolean xCollision = ((this.pos.x + xSize/2.0) < (other.pos.x + other.xSize/2.0) && (this.pos.x + xSize/2.0) > (other.pos.x - other.xSize/2.0)) || ((this.pos.x - xSize/2.0) < (other.pos.x + other.xSize/2.0) && (this.pos.x - xSize/2.0) > (other.pos.x - other.xSize/2.0));
+        boolean yCollision = ((this.pos.y + ySize/2.0) < (other.pos.y + other.ySize/2.0) && (this.pos.y + ySize/2.0) > (other.pos.y - other.ySize/2.0)) || ((this.pos.y - ySize/2.0) < (other.pos.y + other.ySize/2.0) && (this.pos.y - ySize/2.0) > (other.pos.y - other.ySize/2.0));
+        boolean zCollision = ((this.pos.z + zSize/2.0) < (other.pos.z + other.zSize/2.0) && (this.pos.z + zSize/2.0) > (other.pos.z - other.zSize/2.0)) || ((this.pos.z - zSize/2.0) < (other.pos.z + other.zSize/2.0) && (this.pos.z - zSize/2.0) > (other.pos.z - other.zSize/2.0));
 
-        zCollision = ((this.pos.z + zSize) >= (other.pos.z - other.zSize)) || ((this.pos.z - zSize) <= (other.pos.z + other.zSize));
-
-
-        return xCollision || yCollision || zCollision;
+        return xCollision && yCollision && zCollision;
     }
 
+    @Override
+    public String toString()
+    {
+        return "pos : " + pos + " size : " + xSize;
+    }
 }

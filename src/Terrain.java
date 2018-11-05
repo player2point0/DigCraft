@@ -16,6 +16,9 @@ public class Terrain
         float halfZSize = zSize/2.0f;
 
         //place blocks in a rectangle
+
+        blocks.add(new Block(100,100,100,100,100,100,blackColor,redColor,window));
+
         for(float x=-halfXSize;x<=halfXSize;x++)
         {
             for(float z=-halfZSize;z<=halfZSize;z++)
@@ -26,7 +29,6 @@ public class Terrain
                 blocks.add(newBlock);
             }
         }
-
     }
 
     public void RenderBlocks()
@@ -41,11 +43,16 @@ public class Terrain
     {
         for (int i = 0;i<blocks.size();i++)
         {
-            if(obj.CollidesWith(blocks.get(i), newPos)) return true;
+            if(obj.CollidesWith(blocks.get(i), newPos))
+            {
+                //System.out.println(i);
+                System.out.println("block : " + blocks.get(i) + "\nplayer : " + obj);
+
+                return true;
+            }
         }
 
-        System.out.println("no collision");
-
+        //return true;
         return false;
     }
 

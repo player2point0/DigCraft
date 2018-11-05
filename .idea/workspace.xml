@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Player.java" line="121" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/Player.java" line="104" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32d08151-728f-4c5c-b565-b6ba604160b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DigCraftProcessing/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DigCraftProcessing/GameObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DigCraftProcessing/MainGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DigCraftProcessing/MainGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DigCraftProcessing/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DigCraftProcessing/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DigCraftProcessing/Terrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DigCraftProcessing/Terrain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Terrain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,42 +40,43 @@
     <session id="705453406">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="27" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.1" value="5" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.14" value="5" />
-          <entry key="project.open.time.15" value="6" />
+          <entry key="project.open.time.15" value="7" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.19" value="2" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.31" value="1" />
-          <entry key="project.opened" value="28" />
+          <entry key="project.opened" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="3" />
-          <entry key="java" value="25" />
+          <entry key="java" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="3" />
-          <entry key="JAVA" value="25" />
+          <entry key="JAVA" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7820" />
+          <entry key="java" value="8551" />
           <entry key="txt" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7820" />
+          <entry key="JAVA" value="8551" />
           <entry key="PLAIN_TEXT" value="15" />
         </counts>
       </usages-collector>
@@ -85,8 +91,40 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
+            <state relative-caret-position="95">
+              <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#RotateCamera#0;class#Player#0" />
+                <element signature="method#SetCameraRotation#0;class#Player#0" />
+                <element signature="method#AngleCalcPos#0;class#Player#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Terrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+              <folding>
+                <element signature="method#RenderBlocks#0;class#Terrain#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="833">
+              <caret line="49" column="244" lean-forward="true" selection-start-line="49" selection-start-column="244" selection-end-line="49" selection-end-column="244" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2124#2125#0" expanded="true" />
+                <element signature="e#2185#2186#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+            <state relative-caret-position="197">
+              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#createMouseReseter#0;class#MainGame#0" />
@@ -131,8 +169,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/test.java" />
         <option value="$PROJECT_DIR$/src/Block.java" />
-        <option value="$PROJECT_DIR$/src/Terrain.java" />
         <option value="$PROJECT_DIR$/src/GameObject.java" />
+        <option value="$PROJECT_DIR$/src/Terrain.java" />
         <option value="$PROJECT_DIR$/src/MainGame.java" />
         <option value="$PROJECT_DIR$/src/Player.java" />
       </list>
@@ -156,7 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,13 +215,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540162361163" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541366025799" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/peasycam_302/peasycam/library" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -271,7 +309,9 @@
       <workItem from="1540134238330" duration="5028000" />
       <workItem from="1540158177840" duration="3994000" />
       <workItem from="1540293181888" duration="32000" />
-      <workItem from="1541248328835" duration="805000" />
+      <workItem from="1541248328835" duration="8280000" />
+      <workItem from="1541342600751" duration="4359000" />
+      <workItem from="1541450257716" duration="5638000" />
     </task>
     <task id="LOCAL-00001" summary="fixed movement">
       <created>1539953608695</created>
@@ -284,7 +324,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82648000" />
+    <option name="totallyTimeSpent" value="100120000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -299,7 +339,7 @@
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15546559" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15546559" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -311,7 +351,7 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.3986711" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" x="64" y="385" width="1235" height="287" id="Run" order="5" weight="0.42358804" />
+      <window_info anchor="bottom" x="64" y="385" width="1235" height="287" id="Run" order="5" weight="0.3604651" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32890365" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
@@ -371,25 +411,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state relative-caret-position="833">
+          <caret line="49" column="244" lean-forward="true" selection-start-line="49" selection-start-column="244" selection-end-line="49" selection-end-column="244" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2124#2125#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Terrain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        <state relative-caret-position="272">
+          <caret line="19" column="64" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+          <folding>
+            <element signature="method#RenderBlocks#0;class#Terrain#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        <state relative-caret-position="197">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#createMouseReseter#0;class#MainGame#0" />
@@ -402,8 +447,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
+        <state relative-caret-position="95">
+          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#RotateCamera#0;class#Player#0" />
+            <element signature="method#SetCameraRotation#0;class#Player#0" />
+            <element signature="method#AngleCalcPos#0;class#Player#0" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -4,7 +4,6 @@ import java.awt.*;
 
 public class MainGame extends PApplet
 {
-
     final private int redColor = -65536;
     final private int blackColor = -16777216;
 
@@ -25,15 +24,14 @@ public class MainGame extends PApplet
         translate(width/2, height/2, 0);   //recenter
 
         terrain = new Terrain(10, 10, this);
-        player = new Player(0,-500,0,100,100,100, redColor, blackColor,this, terrain);
+        player = new Player(0,-100,0,100,100,100, redColor, blackColor,this, terrain);
         drawCrosshair();
 
-        //camera(0, 0, 1000, 0, 0, 0, 0, 1, 0); //side view
+        //camera(0, 150, 1000, 0, 0, 0, 0, 1, 0); //side view
         //camera(1, -1000, 1, 0, 0, 0, 0, 1, 0); //top view
-        //camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
-
+        camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
+        //ortho(-width, width, -height, height);
         drawAxes(10000);
-
     }
 
     public void createMouseReseter()
@@ -77,7 +75,7 @@ public class MainGame extends PApplet
 
     public void drawAxes(float size)
     {
-        strokeWeight(10);
+        strokeWeight(5);
         //X  - red
         stroke(192,0,0);
         line(-size,0,0,size,0,0);
@@ -108,7 +106,6 @@ public class MainGame extends PApplet
 
         //println("frameRate : "+frameRate);
         drawAxes(10000);
-
     }
 
     public static void main(String... args)
