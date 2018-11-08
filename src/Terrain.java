@@ -43,16 +43,9 @@ public class Terrain
     {
         for (int i = 0;i<blocks.size();i++)
         {
-            if(obj.CollidesWith(blocks.get(i), newPos))
-            {
-                //System.out.println(i);
-                System.out.println("block : " + blocks.get(i) + "\nplayer : " + obj);
-
-                return true;
-            }
+            if(obj.CollidesWith(blocks.get(i), newPos)) return true;
         }
 
-        //return true;
         return false;
     }
 

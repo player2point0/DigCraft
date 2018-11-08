@@ -6,6 +6,7 @@ public class Player extends GameObject
     final private float MOVE_SPEED = 5;
     final private float X_ROTATION_SENS = 0.02f;
     final private float Y_ROTATION_SENS = 0.01f;
+    final private int RAY_CAST_MAX_DIS = 1000;
     final protected float GRAVITY = 4;
 
     private double xRotationAngle;    //measured from below x axis in radians
@@ -20,7 +21,7 @@ public class Player extends GameObject
         xRotationAngle = 0;
         yRotationAngle = 0;
 
-        //SetCameraRotation();
+        SetCameraRotation();
     }
 
     public void RotateCamera()
@@ -40,18 +41,19 @@ public class Player extends GameObject
 
         if(window.mouseY > window.pmouseY)
         {
-            //rotate player up
-            yRotationAngle -= Y_ROTATION_SENS;
-            if(yRotationAngle < 0) yRotationAngle = 0;
+            System.out.println("look down");
+            //rotate player down
+            yRotationAngle += Y_ROTATION_SENS;
+            if(yRotationAngle > Math.PI/2) yRotationAngle = Math.PI/2;
         }
         else if(window.mouseY < window.pmouseY)
         {
-            //rotate player down
-            yRotationAngle += Y_ROTATION_SENS;
-            if(yRotationAngle > Math.PI) yRotationAngle = Math.PI;
+            //rotate player up
+            yRotationAngle -= Y_ROTATION_SENS;
+            if(yRotationAngle < -Math.PI/2) yRotationAngle = -Math.PI/2;
         }
 
-        //SetCameraRotation();
+        SetCameraRotation();
     }
 
     public void MovePlayer()
@@ -77,6 +79,11 @@ public class Player extends GameObject
             newPos = AngleCalcPos(xRotationAngle + 3 * (Math.PI / 2), 0, MOVE_SPEED);
         }
 
+        else if(window.key == 32)   //space bar
+        {
+            Jump();
+        }
+
         if(newPos == null) return;
 
         //calculate new position using the temp angle and radius
@@ -86,7 +93,7 @@ public class Player extends GameObject
 
     private void SetCameraRotation()
     {
-        PVector centerPos = AngleCalcPos(xRotationAngle, -yRotationAngle, 1);
+        PVector centerPos = AngleCalcPos(xRotationAngle, yRotationAngle, 1);
 
         window.camera(pos.x,pos.y,pos.z,centerPos.x,centerPos.y,centerPos.z,0,1,0);
     }
@@ -96,9 +103,9 @@ public class Player extends GameObject
         //update the gameObjects position
         pos = newPos;
         //move the camera to the new position
-        //window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
+        window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
         //recalculate the camera's new center
-        //SetCameraRotation();
+        SetCameraRotation();
     }
 
     private PVector AngleCalcPos(double Theta, double Phi, double radius)
@@ -120,5 +127,20 @@ public class Player extends GameObject
         boolean collisionAtNewPos = terrain.CollisionAtNewPos(newPos,this);
         //if no collision then change position
         if (!collisionAtNewPos) changePosition(newPos);
+    }
+
+    public void Jump()
+    {
+
+    }
+
+    public void RayCast()
+    {
+        //create an imaginary path
+        //starting at the player's position
+        //with a length of max ray cast distance
+        //and in the direction that the player's camera is looking
+        //move incrementally along the line and check for a collision with blocks in the terrain
+        //stop if there is a collision or if at the end of the line
     }
 }

@@ -6,4 +6,10 @@ public class Block extends GameObject
     {
         super(x, y, z, xSize, ySize, zSize, strokeColor, fillColor, window);
     }
+
+    public void SelectBlock()
+    {
+        this.fillColor = -65536;
+        System.out.println(this);
+    }
 }
