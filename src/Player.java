@@ -1,6 +1,8 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
+import java.awt.*;
+
 public class Player extends GameObject
 {
     final private float MOVE_SPEED = 5;
@@ -21,7 +23,7 @@ public class Player extends GameObject
         xRotationAngle = 0;
         yRotationAngle = 0;
 
-        SetCameraRotation();
+        //SetCameraRotation();
     }
 
     public void RotateCamera()
@@ -41,7 +43,6 @@ public class Player extends GameObject
 
         if(window.mouseY > window.pmouseY)
         {
-            System.out.println("look down");
             //rotate player down
             yRotationAngle += Y_ROTATION_SENS;
             if(yRotationAngle > Math.PI/2) yRotationAngle = Math.PI/2;
@@ -53,7 +54,7 @@ public class Player extends GameObject
             if(yRotationAngle < -Math.PI/2) yRotationAngle = -Math.PI/2;
         }
 
-        SetCameraRotation();
+        //SetCameraRotation();
     }
 
     public void MovePlayer()
@@ -87,8 +88,10 @@ public class Player extends GameObject
         if(newPos == null) return;
 
         //calculate new position using the temp angle and radius
-        //move to new position
-        changePosition(newPos);
+        //check if new position will result in a collision
+        boolean collisionAtNewPos = terrain.CollisionAtNewPos(newPos,this);
+        //if no collision then change position
+        if (!collisionAtNewPos) changePosition(newPos);
     }
 
     private void SetCameraRotation()
@@ -103,9 +106,9 @@ public class Player extends GameObject
         //update the gameObjects position
         pos = newPos;
         //move the camera to the new position
-        window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
+        //window.camera(pos.x,pos.y,pos.z,0,0,0,0,1,0);
         //recalculate the camera's new center
-        SetCameraRotation();
+        //SetCameraRotation();
     }
 
     private PVector AngleCalcPos(double Theta, double Phi, double radius)
@@ -142,5 +145,20 @@ public class Player extends GameObject
         //and in the direction that the player's camera is looking
         //move incrementally along the line and check for a collision with blocks in the terrain
         //stop if there is a collision or if at the end of the line
+    }
+
+    public void DrawCrossHair()
+    {
+        //draw a sphere in front of the player
+        PVector pos = AngleCalcPos(xRotationAngle, yRotationAngle, 100);
+
+        super.window.translate(pos.x, pos.y, pos.z);   //move to coordinates
+
+        super.window.fill(fillColor);   //set fill color
+        super.window.stroke(fillColor);   //set line color
+
+        super.window.sphere(5);
+
+        super.window.translate(-pos.x, -pos.y, -pos.z);   //recenter
     }
 }

@@ -1,5 +1,4 @@
 import processing.core.PApplet;
-
 import java.awt.*;
 
 public class MainGame extends PApplet
@@ -18,20 +17,21 @@ public class MainGame extends PApplet
 
     public void setup()
     {
+
+        //collision detection isn't working
+
         createMouseReseter();
         //noCursor();
 
         translate(width/2, height/2, 0);   //recenter
 
         terrain = new Terrain(10, 10, this);
-        player = new Player(0,-300,0,100,300,100, redColor, blackColor,this, terrain);
-        drawCrosshair();
+        player = new Player(0,-100,0,100,100,100, redColor, blackColor,this, terrain);
 
         //camera(0, 150, 1000, 0, 0, 0, 0, 1, 0); //side view
         //camera(1, -1000, 1, 0, 0, 0, 0, 1, 0); //top view
-        //camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
+        camera(1000, -1000, 1000, 0, 0, 0, 0, 1, 0); //45d view
         //ortho(-width, width, -height, height);
-        drawAxes(10000);
     }
 
     public void createMouseReseter()
@@ -56,21 +56,6 @@ public class MainGame extends PApplet
 
         if(mouseY == height-1) mouseRobot.mouseMove(mouseX, 1); //if mouse touches top set mouse to the bottom
         if(mouseY == 0) mouseRobot.mouseMove(mouseX, height); //if mouse touches bottom set mouse to the top
-    }
-
-    public void drawCrosshair()
-    {
-        /*
-        pushMatrix();
-
-        rectMode(CENTER);
-        fill(51);
-        stroke(255);
-
-        ellipse(0,0,50,50);
-
-        popMatrix();
-        */
     }
 
     public void drawAxes(float size)
@@ -101,8 +86,10 @@ public class MainGame extends PApplet
         if (mousePressed && (mouseButton == LEFT)) player.RayCast();//ray casting to check for block collision
 
         terrain.RenderBlocks();
+        //player.DrawCrossHair();
+        player.Render();
 
-        drawCrosshair();
+
 
         //println("frameRate : "+frameRate);
     }

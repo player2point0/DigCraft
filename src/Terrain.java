@@ -18,6 +18,7 @@ public class Terrain
         //place blocks in a rectangle
 
         blocks.add(new Block(100,100,100,100,100,100,blackColor,redColor,window));
+        //blocks.add(new Block(300,50,300,200,200,200,blackColor,redColor,window));
 
         for(float x=-halfXSize;x<=halfXSize;x++)
         {
